@@ -1,11 +1,20 @@
-steps:
-  - name: Checkout
-    uses: actions/checkout@v2
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
 
-  - name: Semantic Release
-    uses: cycjimmy/semantic-release-action@v2
-    with:
-      dry_run: true
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+jobs:
+  my_job:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          dry_run: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
