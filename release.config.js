@@ -1,3 +1,3 @@
 module.exports = {
-  plugins: ["@semantic-release/git", "@semantic-release/changelog"],
+  plugins: ["@semantic-release/changelog", "@semantic-release/git"],
 };
